@@ -73,6 +73,23 @@ export const createArticle = data => {
   return request({
     method: 'POST',
     url: '/api/articles',
-    data
+    data,
+  })
+}
+
+// 编辑文章
+export const updateArticle = (slug, data) => {
+  return request({
+    method: 'PUT',
+    url: `/api/articles/${slug}`,
+    data,
+  })
+}
+
+// 删除文章
+export const deleteArticle = slug => {
+  return request({
+    method: 'DELETE',
+    url: `/api/articles/${slug}`,
   })
 }
