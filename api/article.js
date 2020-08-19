@@ -50,3 +50,20 @@ export const getComments = slug => {
     method: 'GET',
   })
 }
+
+// 关注用户
+export const addFollow = username => {
+  return request({
+    url: `/api/profiles/${username}/follow`,
+    method: 'POST',
+  })
+}
+
+
+// 取消关注
+export const deleteFollow = username => {
+  return request({
+    method: 'DELETE',
+    url: `/api/profiles/${username}/follow`,
+  })
+}
