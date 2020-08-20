@@ -100,7 +100,6 @@ export default {
   },
   async mounted () {
     const slug = this.$route.params.slug
-    console.log(slug)
     if (slug) {
       this.slug = slug
       const { data } = await getArticle(slug)

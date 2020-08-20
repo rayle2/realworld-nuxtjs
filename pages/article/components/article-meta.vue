@@ -92,11 +92,11 @@ export default {
       if (!this.user) return this.$router.push('/login')
       author.followDisabled = true
       if (author.following) {
-        // 取消点赞
+        // 取关
         await deleteFollow(author.username)
         author.following = false
       } else {
-        // 添加点赞
+        // 关注
         await addFollow(author.username)
         author.following = true
       }
