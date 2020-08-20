@@ -106,7 +106,7 @@ export default {
       } catch (err) {
         console.log(err)
         this.errors = err.response.data.errors
-        console.dir('失败', err)
+        // console.dir('失败', err)
       }
     },
     logout () {
