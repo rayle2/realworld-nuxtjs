@@ -8,57 +8,62 @@
           <p class="text-xs-center">
             <!-- <a href="">Have an account?</a> -->
             <nuxt-link
-                v-if="isLogin"
-                to="/register"
+              v-if="isLogin"
+              to="/register"
             >Need an account?
             </nuxt-link>
             <nuxt-link
-                v-else
-                to="/login"
+              v-else
+              to="/login"
             >Have an account?
             </nuxt-link>
           </p>
 
           <ul class="error-messages">
-            <template v-for="(messages,field) in errors">
+            <!--            <template v-for="(messages,field) in errors">-->
+            <!--              <li-->
+            <!--                v-for="(message, index) in messages"-->
+            <!--                :key="index"-->
+            <!--              >{{ field }} {{ message }}-->
+            <!--              </li>-->
+            <!--            </template>-->
+            <template v-for="(messages,key,index) in errors">
               <li
-                  v-for="(message, index) in messages"
-                  :key="index"
-              >{{ field }} {{ message }}
+              >{{ key }} {{ messages }}
               </li>
             </template>
           </ul>
 
           <form @submit.prevent="onSubmit">
             <fieldset
-                v-if="!isLogin"
-                class="form-group"
+              v-if="!isLogin"
+              class="form-group"
             >
               <input
-                  required
-                  class="form-control form-control-lg"
-                  type="text"
-                  placeholder="Your Name"
-                  v-model="user.username"
+                required
+                class="form-control form-control-lg"
+                type="text"
+                placeholder="Your Name"
+                v-model="user.username"
               >
             </fieldset>
             <fieldset class="form-group">
               <input
-                  required
-                  type="email"
-                  class="form-control form-control-lg"
-                  placeholder="Email"
-                  v-model="user.email"
+                required
+                type="email"
+                class="form-control form-control-lg"
+                placeholder="Email"
+                v-model="user.email"
               >
             </fieldset>
             <fieldset class="form-group">
               <input
-                  required
-                  minlength="8"
-                  class="form-control form-control-lg"
-                  type="password"
-                  placeholder="Password"
-                  v-model="user.password"
+                required
+                minlength="8"
+                class="form-control form-control-lg"
+                type="password"
+                placeholder="Password"
+                v-model="user.password"
               >
             </fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right">
@@ -105,6 +110,7 @@ export default {
         await this.$router.push('/')
       } catch (err) {
         this.errors = err.response.data.errors
+        console.log(this.errors)
         console.dir('失败', err)
       }
     },
